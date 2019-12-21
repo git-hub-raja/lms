@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/login.js"></script>
 </head>
@@ -29,7 +30,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                         <select name="user-type" id="user-type">
                             <option value="">= Click here =</option>
-                            <option value="LIBRARIAN">Librarian</option>
+                            <option value="ADMIN">Admin</option>
                             <option value="STUDENT">Student</option>
                         </select>
                     </div>
@@ -39,7 +40,7 @@
                         <label>Usename</label>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <input type="text" name="user" id="user" placeholder="Enter your username...">
+                        <input type="text" name="user-name" id="user-name" placeholder="Enter your username...">
                     </div>
                 </div>
                 <div class="row input-bg last-input-vpad">
@@ -47,7 +48,7 @@
                         <label>Password</label>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <input type="password" name="pass" id="pass" placeholder="Enter your username...">
+                        <input type="password" name="password" id="password" placeholder="Enter your username...">
                     </div>
                 </div>
                 <hr>
@@ -55,8 +56,8 @@
                     <div class="login-actions-wrap">
                         <div class="row">
                             <input type="button" value="Log In" onclick="logIn();">
-                            <!-- <input type="button" value="Reset">
-                            <input type="button" value="Cancel"> -->
+                            <input type="reset" value="Reset" id="re-set">
+                            <!-- <input type="button" value="Cancel"> -->
                         </div>
                         <div class="row">
                             <a href="#">Register Here</a>
