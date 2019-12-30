@@ -1,3 +1,6 @@
+/**
+ * Login Actions.
+ */
 
 function logIn(){
     var user_type = document.getElementById("user-type").value;
@@ -21,8 +24,7 @@ function logIn(){
         if(user_exists.length > 0){
             sessionStorage.setItem("user-type", user_type.trim());
             sessionStorage.setItem("user-name", user_name.trim());
-            document.getElementsByClassName("login-container")[0].style.display = "none";
-            document.getElementsByClassName("overlay")[0].style.display = "none";
+            window.location.href = "./lms.html";
         }else{
             alert("Invalid USER NAME or PASSWORD.");
             return false;
@@ -30,14 +32,8 @@ function logIn(){
     }
 }
 
-function close(){
-    document.getElementsByClassName("login-container")[0].style.display = "none";
-    document.getElementsByClassName("overlay")[0].style.display = "none";
-}
-
 function logout(){    
     sessionStorage.removeItem("user-type");
     sessionStorage.removeItem("user-name");
-    document.getElementsByClassName("login-container")[0].style.display = "block";
-    document.getElementsByClassName("overlay")[0].style.display = "block";
+    window.location.href = "./login.html";
 }

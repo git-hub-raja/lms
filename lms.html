@@ -2,6 +2,14 @@
 <html>
 
 <head>
+    <script>
+        var user_type = sessionStorage.getItem("user-type");    
+        var user_name = sessionStorage.getItem("user-name"); 
+        if(user_type == null || user_type == undefined
+            || user_name == null || user_name == undefined) {
+                window.location.href = "./login.html";
+        }
+    </script>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
@@ -9,66 +17,11 @@
     <script src="js/data.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/add.js"></script>
 </head>
 
 <body>
     <div class="base-container">
-        <!-- Overlay -->
-        <div class="overlay"></div>
-        <!-- Login -->
-        <div class="login-container">
-            <div class="row lheader">
-                <h1>Log In</h1>
-                <span class="close" onclick="close();">x</span>
-            </div>
-            <hr>
-            <form action="#">
-                <div class="row input-bg first-input-vpad">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <label>User Type</label>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <select name="user-type" id="user-type">
-                            <option value="">= Click here =</option>
-                            <option value="ADMIN">Admin</option>
-                            <option value="STUDENT">Student</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row input-bg first-input-vpad">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <label>Usename</label>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <input type="text" name="user-name" id="user-name" placeholder="Enter your username...">
-                    </div>
-                </div>
-                <div class="row input-bg last-input-vpad">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <label>Password</label>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <input type="password" name="password" id="password" placeholder="Enter your username...">
-                    </div>
-                </div>
-                <hr>
-                <div class="row footer">
-                    <div class="login-actions-wrap">
-                        <div class="row">
-                            <input type="button" value="Log In" onclick="logIn();">
-                            <input type="reset" value="Reset" id="re-set">
-                            <!-- <input type="button" value="Cancel"> -->
-                        </div>
-                        <div class="row">
-                            <a href="#">Register Here</a>
-                        </div>
-                        <div class="row forgot-password">
-                            <a href="#">Forgot Password ?</a>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
         <!-- Home -->
         <div class="home-container">
             <div class="row header">
@@ -83,7 +36,6 @@
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                     <a href="#" onclick="logout();">
                         <i class="material-icons exit">exit_to_app</i>
-                        <!-- <i class="material-icons identity">perm_identity</i> -->
                     </a>
 
                 </div>
@@ -94,20 +46,10 @@
                         <a href="#">Menu</a>
                         <div class="menu">
                             <ul>
-                                <li><a href="#" onclick="loadComponent('approval');">Approvals</a>
-                                    <!-- <ul>
-                                        <li><a href="#" onclick="loadComponent(this, 'issue');">Issue</a></li>
-                                        <li><a href="#" onclick="loadComponent(this, 'return');">Return</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a href="#" onclick="loadComponent('add');">Add a Book</a></li>
-                                <li><a href="#" onclick="loadComponent('edit');">Edit a Book</a></li>
-                                <li><a href="#" onclick="loadComponent('delete');">Delete a Book</a></li>
-                                <li>
-                                    <input type="text" name="search" id="search" placeholder="Search here..">
-                                    <i class="material-icons search"
-                                        onclick="loadComponent('search-results')">search</i>
-                                </li>
+                                <li><a href="#" onclick="loadComponent('approval');">APPROVALS</a></li>
+                                <li><a href="#" onclick="loadComponent('add');">ADD BOOK</a></li>
+                                <li><a href="#" onclick="loadComponent('edit');">EDIT BOOK</a></li>
+                                <li><a href="#" onclick="loadComponent('delete');">DELETE BOOK</a></li>
                             </ul>
                         </div>
                     </div>
@@ -118,41 +60,41 @@
                 <!-- Add -->
                 <div class="add" id="add">
                     <form action="#">
-                        <h2>Add a Book</h2>
+                        <h2>Add Book</h2>
                         <hr>
                         <div class="row input-bg first-input-vpad">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <label for="">Book Name</label>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <input type="text" name="book_name" id="book_name" placeholder="Enter Book Name">
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <label for="">Author</label>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <input type="text" name="author" id="author" placeholder="Enter Author Name">
                             </div>
                         </div>
                         <div class="row input-bg last-input-vpad">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <label for="">Publisher</label>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
                                 <input type="text" name="publisher" id="publisher" placeholder="Enter Publisher Name">
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                <label for="">No of Stokes</label>
+                            <div class="col-xs-12 col-md-6 col-lg-3">
+                                <label for="">No of Stocks</label>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                <input type="text" name="stokes" id="stokes" placeholder="Enter number of Stokes">
+                            <div class="col-xs-12 col-md-6 col-lg-3">
+                                <input type="text" name="stocks" id="stocks" placeholder="Enter number of Stocks">
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="actions">
-                                <input type="button" value="Add">
-                                <input type="reset" value="Reset">
+                                <input type="button" value="Add" id="add-btn" onclick="add();">
+                                <input type="reset" value="Reset" id="re-set-btn">
                                 <input type="button" value="Cancel" onclick="cancel('add');">
                             </div>
                         </div>
@@ -161,7 +103,7 @@
                 <!-- Edit -->
                 <div class="edit" id="edit">
                     <form action="#">
-                        <h2>Edit a Book</h2>
+                        <h2>EDIT BOOK</h2>
                         <hr>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
@@ -204,7 +146,7 @@
                 <!-- Delete -->
                 <div class="delete" id="delete">
                     <form action="#">
-                        <h2>Delete a Book</h2>
+                        <h2>DELETE BOOK</h2>
                         <hr>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
